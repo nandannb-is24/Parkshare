@@ -198,8 +198,14 @@ If the email already exists as a resident, the script offers a safe confirmation
 You can also supply credentials via environment variables:
 ```bash
 cd server
-ADMIN_NAME="Super Admin" ADMIN_EMAIL="admin@parkshare.local" ADMIN_PASSWORD="<your_secure_password>" npm run create-admin
+ADMIN_NAME="Admin" ADMIN_EMAIL="admin@parkshare.local" ADMIN_PASSWORD="<your_secure_password>" npm run create-admin
 ```
+
+### Initial Administrator Credentials (Configured)
+- **Email**: `admin@parkshare.local`
+- **Role**: `admin`
+- **Office Identifier**: `Admin office`
+- **Login URL**: `http://localhost:5173/login`
 
 Once created, sign in at `http://localhost:5173/login`. You will be automatically redirected to the Executive Admin Console at `/admin`.
 
@@ -259,8 +265,8 @@ Once created, sign in at `http://localhost:5173/login`. You will be automaticall
 8. **Cancellation & Refund**: Log back in as Bob. In **My Bookings**, click **Cancel Reservation**. Notice the prompt informing that funds will be refunded. Confirm cancellation. The payment status transitions to `Refunded` and booking status becomes `Cancelled`.
 
 ### B. Admin Workflow
-1. **Create Administrator**: Run `npm run create-admin` in `server/` or promote an existing account.
-2. **Access Admin Console**: Log in. The application automatically directs to `/admin`.
+1. **Access Administrator Account**: Log in with the configured administrator credentials (`admin@parkshare.local`).
+2. **Access Admin Console**: Upon login, the application automatically directs you to `/admin`.
 3. **Inspect Metrics**: Review Net Retained Revenue, Gross Paid Revenue, and Refunded amounts. Confirm that pending amounts are excluded from revenue.
 4. **Manage Users**: Go to `/admin/users`. Search for "Alice" or filter by role.
 5. **Audit Bookings**: Go to `/admin/bookings`. Filter reservations by status (`Cancelled`) or payment status (`Refunded`).
