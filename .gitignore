@@ -23,6 +23,8 @@ chrome_temp/
 tmp/
 temp/
 .cache/
+backups/
+server/backups/
 
 # Logs
 *.log

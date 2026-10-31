@@ -5,8 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "start:local": "node scripts/startLocal.js",
+    "start:atlas": "node scripts/startAtlas.js",
     "dev": "nodemon server.js",
     "create-admin": "node scripts/createAdmin.js",
+    "test-atlas": "node scripts/testAtlasConnection.js",
+    "migrate-atlas": "node scripts/migrateToAtlas.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

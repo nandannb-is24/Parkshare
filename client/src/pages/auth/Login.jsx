@@ -36,10 +36,22 @@ export default function Login() {
     setLoading(false);
 
     if (result.success) {
-      // Redirect based on user role or previously attempted route
-      const destination =
-        location.state?.from?.pathname ||
-        (result.user.role === 'admin' ? '/admin' : '/dashboard');
+      const attempted = location.state?.from?.pathname;
+      const isAdminRoute = (path) =>
+        typeof path === 'string' && (path === '/admin' || path.startsWith('/admin/'));
+
+      let destination;
+      if (result.user?.role === 'admin') {
+        // Admin users should only be redirected to valid /admin routes. Otherwise, redirect to /admin.
+        destination = isAdminRoute(attempted) ? attempted : '/admin';
+      } else {
+        // Residents should be redirected to valid non-admin attempted routes. Otherwise, redirect to /dashboard.
+        destination =
+          attempted && !isAdminRoute(attempted) && attempted !== '/login' && attempted !== '/register'
+            ? attempted
+            : '/dashboard';
+      }
+
       navigate(destination, { replace: true });
     } else {
       setError(result.message);

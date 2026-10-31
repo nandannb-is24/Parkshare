@@ -49,6 +49,7 @@ app.get('/api/health', (_req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     database: dbStatus,
+    dbEnv: (process.env.DB_ENV || 'local').toLowerCase().trim(),
   });
 });
 
